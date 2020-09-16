@@ -1,0 +1,1089 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import sm kivy.uix.screenmanager
+
+
+<MainWindow>:
+    name : "main"
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'welcome.gif'
+        anim_loop : 1
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Label:
+        font_size: 65
+        font_name : "BuxtonSketch"
+        bold : True
+        color:(0,0,1,1)
+        pos_hint: {"center_x":.65, "center_y":.6}
+        text: "WHAT DO YOU WANT TO ATTEMPT"
+
+
+    SmoothButton:
+        font_size: 50
+        text:"RANDOM"
+        bold : True
+        font_name : "BuxtonSketch"
+        back_color: (0,.70,.70,1)
+        size_hint: .25,.15
+        pos_hint: {"center_x":.45, "center_y":.4}
+
+        on_press:
+            root.onclick_random()
+
+
+    SmoothButton:
+        font_size: 50
+        text:"ALPHABET"
+        font_name : "BuxtonSketch"
+        bold : True
+        back_color: (0,.70,.70,1)
+        size_hint: .25,.15
+        pos_hint: {"center_x":.85, "center_y":.4}
+        on_release:
+            root.onclick_seq()
+
+    SmoothButton:
+        font_size: 50
+        text:"Close"
+        bold : True
+        font_name : "BuxtonSketch"
+        back_color: (.70,.23,0,1)
+        size_hint: .15,.1
+        pos_hint: {"center_x":.1, "center_y":.1}
+
+        on_press:
+            root.MyApp.Exit()
+
+
+
+<CorrectWindow>:
+    name : "correct"
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Button :
+        background_normal : 'homeiconBlue.png'
+        background_down : 'homeiconRed.png'
+        size_hint : .15,.15
+        pos_hint: {"center_x":.06, "center_y":.93}
+        keep_ratio: False
+        allow_stretch: True
+        on_press:
+            root.manager.current="main"
+
+    Image :
+        source : 'correct.gif'
+        anim_delay : .1
+        size : 300,400
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Label :
+        id : label1
+        text : "CORRECT WELL DONE"
+        bold : True
+        color:(0,0.9,0,1)
+        pos_hint: {"center_x":.65, "center_y":.6}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+    SmoothButton:
+        font_size: 40
+        text:"NEXT"
+        font_name : "BuxtonSketch"
+        bold : True
+        back_color: (0,0.9,0,1)
+        size_hint: .15,.1
+        pos_hint: {"center_x":.75, "center_y":.4}
+        on_release:
+            root.next()
+
+<TryAgainWindow>:
+    name : "wrong"
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+    Button :
+        background_normal : 'homeiconBlue.png'
+        background_down : 'homeiconRed.png'
+        size_hint : .15,.15
+        pos_hint: {"center_x":.06, "center_y":.93}
+        keep_ratio: False
+        allow_stretch: True
+        on_press:
+            root.manager.current="main"
+    Image :
+        source : 'sorry.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Label :
+        id : label1
+        text : "OHH!! PLEASE TRY AGAIN"
+        bold : True
+        color:(0.9,0,0,1)
+        pos_hint: {"center_x":.65, "center_y":.6}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+    SmoothButton:
+        font_size: 40
+        text:"NEXT"
+        font_name : "BuxtonSketch"
+        bold : True
+        back_color: (0,0.9,0,1)
+        size_hint: .15,.1
+        pos_hint: {"center_x":.75, "center_y":.4}
+        on_release:
+            root.next()
+
+    SmoothButton:
+        font_size: 40
+        text:"TRY AGAIN"
+        font_name : "BuxtonSketch"
+        bold : True
+        back_color: (0.9,0,0,1)
+        size_hint: .15,.1
+        pos_hint: {"center_x":.55, "center_y":.4}
+        on_release:
+            root.tryagain()
+
+    Image :
+        size : 5,5
+        background_normal: 'Chemistry2.jpg'
+        background_down: 'bg.png'
+        pos_hint: {"center_x":.1, "center_y":.9}
+        keep_ratio: False
+        allow_stretch: True
+
+
+<A>:
+    name : "1"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'A.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<B>:
+    name : "2"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'B.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<C>:
+    name : "3"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'C.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<D>:
+    name : "4"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'D.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<E>:
+    name : "5"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'E.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<F>:
+    name : "6"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'F.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<G>:
+    name : "7"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'G.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<H>:
+    name : "8"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'H.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+<I>:
+    name : "9"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'I.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<J>:
+    name : "10"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'J.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<K>:
+    name : "11"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'K.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<L>:
+    name : "12"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'L.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<M>:
+    name : "13"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'M.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<N>:
+    name : "14"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'N.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<O>:
+    name : "15"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'O.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<P>:
+    name : "16"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'P.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<Q>:
+    name : "17"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'Q.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<R>:
+    name : "18"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'R.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<S>:
+    name : "19"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'S.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<T>:
+    name : "20"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'T.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<U>:
+    name : "21"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'U.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<V>:
+    name : "22"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'V.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<W>:
+    name : "23"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'W.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<X>:
+    name : "24"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'X.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<Y>:
+    name : "25"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'Y.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+<Z>:
+    name : "26"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'try.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Image :
+        source : 'Z.png'
+        size_hint : .4,.4
+        pos_hint: {"center_x":.65, "center_y":.4}
+        keep_ratio: False
+        allow_stretch: True
+
+
+
+    Label :
+        text : "TRY SPEAKING"
+        bold : True
+        color:(.7,.12,.12,1)
+        pos_hint: {"center_x":.65, "center_y":.7}
+        font_size: 100
+        font_name : "BuxtonSketch"
+
+
+<Finish>:
+    name : "finish"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'thank_you.gif'
+        size : 380,480
+        pos_hint: {"center_x":.15, "center_y":.55}
+        keep_ratio: False
+
+    Label :
+        text : "CONGRATULATIONS"
+        bold : True
+        color:(0,0,1,1)
+        pos_hint: {"center_x":.65, "center_y":.6}
+        font_size: 100
+        font_name : "BuxtonSketch"
+    Button :
+        background_normal : 'homeiconBlue.png'
+        background_down : 'homeiconRed.png'
+        size_hint : .15,.15
+        pos_hint: {"center_x":.06, "center_y":.93}
+        keep_ratio: False
+        allow_stretch: True
+        on_press:
+            root.manager.current="main"
+    Label :
+        text : "YOU HAVE COMPLETED ALL ALPHABETS"
+        bold : True
+        color:(0,0,1,1)
+        pos_hint: {"center_x":.65, "center_y":.5}
+        font_size: 60
+        font_name : "BuxtonSketch"
+
+<SmoothButton@Button>:
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (.2,.2,1,.8)
+    border_radius: [40]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size : self.size
+            pos: self.pos
+            radius: self.border_radius
+
+
+

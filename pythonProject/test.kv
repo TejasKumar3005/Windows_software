@@ -1,0 +1,37 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import sm kivy.uix.screenmanager
+
+
+<MainWindow>:
+    name : "main"
+
+
+
+
+    SmoothButton:
+        font_size: 50
+        text:"Close"
+        bold : True
+        font_name : "BuxtonSketch"
+        back_color: (.70,.23,0,1)
+        size_hint: .15,.1
+        pos_hint: {"center_x":.1, "center_y":.1}
+
+        on_press:
+            root.MyApp.Exit()
+
+
+<SmoothButton@Button>:
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (.2,.2,1,.8)
+    border_radius: [40]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size : self.size
+            pos: self.pos
+            radius: self.border_radius
+
+
