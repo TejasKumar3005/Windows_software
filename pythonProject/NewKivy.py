@@ -27,7 +27,12 @@ Builder.load_string("""#: import FadeTransition kivy.uix.screenmanager.FadeTrans
 
 <MainWindow>:
     name : "main"
-    
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
 
     Image :
         source : 'welcome.gif'
@@ -46,12 +51,13 @@ Builder.load_string("""#: import FadeTransition kivy.uix.screenmanager.FadeTrans
 
 
     SmoothButton:
+        id : btn_random
         font_size: 50
         text:"RANDOM"
         bold : True
         font_name : "BuxtonSketch"
-        back_color: (0,.70,.70,1)
-        size_hint: .25,.15
+        back_color: (0,.70,.70,1) if btn_random.state == "normal" else (.2,.52,1,1)
+        size_hint: (.25,.15) if btn_random.state == "normal" else (.30,.20)
         pos_hint: {"center_x":.45, "center_y":.4}
 
         on_press:
@@ -59,27 +65,29 @@ Builder.load_string("""#: import FadeTransition kivy.uix.screenmanager.FadeTrans
 
 
     SmoothButton:
+        id : btn_alphabet
         font_size: 50
         text:"ALPHABET"
         font_name : "BuxtonSketch"
         bold : True
-        back_color: (0,.70,.70,1)
-        size_hint: .25,.15
+        back_color: (0,.70,.70,1) if btn_alphabet.state == "normal" else (.2,.52,1,1)
+        size_hint: (.25,.15) if btn_alphabet.state == "normal" else (.30,.20)
         pos_hint: {"center_x":.85, "center_y":.4}
         on_release:
             root.onclick_seq()
 
     SmoothButton:
+        id : btn_close
         font_size: 50
         text:"Close"
         bold : True
         font_name : "BuxtonSketch"
-        back_color: (.70,.23,0,1)
-        size_hint: .15,.1
+        back_color: (.70,.23,0,1) if btn_close.state == "normal" else (.6,.2,0,1)
+        size_hint: (.15,.1) if btn_close.state == "normal" else (.20,.15)
         pos_hint: {"center_x":.1, "center_y":.1}
 
         on_press:
-            root.MyApp.Exit()
+            root.manager.current="end"
 
 
 
@@ -119,12 +127,13 @@ Builder.load_string("""#: import FadeTransition kivy.uix.screenmanager.FadeTrans
         font_name : "BuxtonSketch"
 
     SmoothButton:
+        id : btn_next
         font_size: 40
         text:"NEXT"
         font_name : "BuxtonSketch"
-        bold : True
-        back_color: (0,0.9,0,1)
-        size_hint: .15,.1
+        bold : True       
+        back_color: (0,0.9,0,1) if btn_next.state == "normal" else (.2,.8,0.2,1)
+        size_hint: (.15,.1) if btn_next.state == "normal" else (.20,.15)
         pos_hint: {"center_x":.75, "center_y":.4}
         on_release:
             root.next()
@@ -162,23 +171,25 @@ Builder.load_string("""#: import FadeTransition kivy.uix.screenmanager.FadeTrans
         font_name : "BuxtonSketch"
 
     SmoothButton:
+        id : btn_next
         font_size: 40
         text:"NEXT"
         font_name : "BuxtonSketch"
         bold : True
-        back_color: (0,0.9,0,1)
-        size_hint: .15,.1
+        back_color: (0,0.9,0,1) if btn_next.state == "normal" else (.2,.8,0.2,1)
+        size_hint: (.15,.1) if btn_next.state == "normal" else (.20,.15)
         pos_hint: {"center_x":.75, "center_y":.4}
         on_release:
             root.next()
 
     SmoothButton:
+        id : btn_tryagain 
         font_size: 40
         text:"TRY AGAIN"
         font_name : "BuxtonSketch"
         bold : True
-        back_color: (0.9,0,0,1)
-        size_hint: .15,.1
+        back_color: (0.9,0,0,1) if btn_tryagain.state == "normal" else (.8,.2,0.2,1)
+        size_hint: (.15,.1) if btn_tryagain.state == "normal" else (.20,.15)
         pos_hint: {"center_x":.55, "center_y":.4}
         on_release:
             root.tryagain()
@@ -1090,6 +1101,24 @@ Builder.load_string("""#: import FadeTransition kivy.uix.screenmanager.FadeTrans
         font_size: 60
         font_name : "BuxtonSketch"
 
+<End>:
+    name : "end"
+
+    Image :
+        source : 'bg.jpeg'
+        size : 1600,1000
+        pos : 0,0
+        keep_ratio: False
+        allow_stretch: True
+
+    Image :
+        source : 'thank_you.gif'
+        size_hint: .75,.75
+        pos_hint: {"center_x":.5, "center_y":.5}
+        keep_ratio: False
+
+    
+
 <SmoothButton@Button>:
     background_color: (0,0,0,0)
     background_normal: ''
@@ -1181,7 +1210,7 @@ def recognizing(alphabet):
         ask_1 = '''Try speaking {} '''.format(alphabet)
 
         def speak():
-            time.sleep(.5)
+            time.sleep(.55)
             st(ask_1)
 
         def listen():
@@ -1235,7 +1264,7 @@ class MainWindow(Screen):
 
 class A(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1244,7 +1273,7 @@ class A(Screen):
 
 class B(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1253,7 +1282,7 @@ class B(Screen):
 
 class C(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1262,7 +1291,7 @@ class C(Screen):
 
 class D(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1271,7 +1300,7 @@ class D(Screen):
 
 class E(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1280,7 +1309,7 @@ class E(Screen):
 
 class F(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1289,7 +1318,7 @@ class F(Screen):
 
 class G(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1298,7 +1327,7 @@ class G(Screen):
 
 class H(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1307,7 +1336,7 @@ class H(Screen):
 
 class I(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1316,7 +1345,7 @@ class I(Screen):
 
 class J(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1325,7 +1354,7 @@ class J(Screen):
 
 class K(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1334,7 +1363,7 @@ class K(Screen):
 
 class L(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1343,7 +1372,7 @@ class L(Screen):
 
 class M(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1352,7 +1381,7 @@ class M(Screen):
 
 class N(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1361,7 +1390,7 @@ class N(Screen):
 
 class O(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1370,7 +1399,7 @@ class O(Screen):
 
 class P(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1379,7 +1408,7 @@ class P(Screen):
 
 class Q(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1388,7 +1417,7 @@ class Q(Screen):
 
 class R(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1397,7 +1426,7 @@ class R(Screen):
 
 class S(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1406,7 +1435,7 @@ class S(Screen):
 
 class T(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1415,7 +1444,7 @@ class T(Screen):
 
 class U(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1424,7 +1453,7 @@ class U(Screen):
 
 class V(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1433,7 +1462,7 @@ class V(Screen):
 
 class W(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1442,7 +1471,7 @@ class W(Screen):
 
 class X(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1451,7 +1480,7 @@ class X(Screen):
 
 class Y(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1460,7 +1489,7 @@ class Y(Screen):
 
 class Z(Screen):
     def on_enter(self):
-        time.sleep(.5)
+        time.sleep(.75)
         self.callback()
 
     def callback(self):
@@ -1471,6 +1500,13 @@ class Z(Screen):
 
 
 class CorrectWindow(Screen):
+    def on_enter(self):
+        time.sleep(0)
+        self.callback()
+
+    def callback(self):
+        st("CORRECT WELL DONE")
+
     def next(self):
         if p=="r":
             a = str((random.randint(1, 26)))
@@ -1490,6 +1526,12 @@ class CorrectWindow(Screen):
 
 
 class TryAgainWindow(Screen):
+    def on_enter(self):
+        time.sleep(.75)
+        self.callback()
+
+    def callback(self):
+        st("OH PLEASE TRY AGAIN")
 
     def next(self):
         if p=="r":
@@ -1517,10 +1559,21 @@ class TryAgainWindow(Screen):
 
 class Finish(Screen):
     pass
+class End(Screen):
+    def on_enter(self):
+        time.sleep(2)
+        self.callback()
 
-sm = ScreenManager(transition = FadeTransition(duration=.5))
+    def callback(self):
+        self.MyApp.exit()
+    pass
+
+sm = ScreenManager(transition = FadeTransition(duration=1.15))
 sm.add_widget(MainWindow(name='main'))
+sm.add_widget(CorrectWindow(name='correct'))
+sm.add_widget(TryAgainWindow(name='wrong'))
 sm.add_widget(Finish(name='finish'))
+sm.add_widget(End(name='end'))
 sm.add_widget(A(name='1'))
 sm.add_widget(B(name='2'))
 sm.add_widget(C(name='3'))
@@ -1551,8 +1604,7 @@ sm.add_widget(Z(name='26'))
 
 
 
-sm.add_widget(CorrectWindow(name='correct'))
-sm.add_widget(TryAgainWindow(name='wrong'))
+
 
 
 
